@@ -1,0 +1,23 @@
+#!/bin/bash
+# GPX to KML - Converts a GPX file to KML by using gpsbabel
+# Jon Alonso <jalonsors@github>
+# Revision 0 - 2014/12/07
+
+cd $NAUTILUS_SCRIPT_CURRENT_URI
+
+inputfileext="${1##*.}"
+outputfile=${1//.gpx/.kml}
+gpxext="gpx"
+
+if [ $inputfileext != "gpx" ]; then
+  notify-send -u critical "GPX to KML" "Input file is not a .GPX"
+  exit -1
+fi
+
+if [[ $outputfile = $1 ]]; then
+  notify-send -u critical "GPX to KML" "Input file must be a .gpx"
+else
+  gpsbabel -p "" -r -t -i gpx -f "$1" -o kml -F "$outputfile"
+  notify-send -u critical "GPX to KML" "Job finished"
+fi
+
