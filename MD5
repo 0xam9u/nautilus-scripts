@@ -1,0 +1,14 @@
+#!/bin/bash
+# MD5 - Computes MD5 hash value for a file
+# Jon Alonso <jalonsors@github>
+# Revision 0 - 2014/12/07
+
+cd $NAUTILUS_SCRIPT_CURRENT_URI
+
+# http://ubuntuforums.org/showthread.php?t=1468898
+hash=$(md5sum "$1")
+hash="${hash%% *}"
+
+zenity --info --title "$1" --text "$hash"
+
+exit 0
