@@ -1,0 +1,7 @@
+#!/bin/bash
+# Open Terminal Here
+# Jon Alonso <jalonsors@github>
+# Revision 0 - 2014/12/08
+
+gnome-terminal $NAUTILUS_SCRIPT_CURRENT_URI
+
